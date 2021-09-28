@@ -3,45 +3,93 @@
 
 
 def order(values: list = None) -> list:
-    if values is None:
-        # TODO: demander les valeurs ici
-        pass
+    
+   if values is None:       
+        values = []
+        for nbr in range(10) : 
+        a= input("valeur de word 1 : ")
+        values.append(a)
 
-    return []
+    return values.sort()
 
 
 def anagrams(words: list = None) -> bool:
-    if words is None:
-        # TODO: demander les mots ici
-        pass
-
-    return False
+   
+    if words is None :
+        words = [input("valeur de word 1 : "),input("valeur de word 1 : ")]
+        
+    return True if sorted(words[0]) == sorted(words[1]) else False
 
 
 def contains_doubles(items: list) -> bool:
+    
+    sorted_items = sorted(items)
+    for i in range(1,len(sorted_items) ):
+        if sorted_items[i] == sorted_items[i-1]:
+            return True
+
     return False
 
 
+    return set(items) != len(items)
+
+
+def average(grades : list) :
+    total = 0
+    for grade in grades :
+        total += grade
+    avg = total / len(grades)
+    return avg
+        
+
 def best_grades(student_grades: dict) -> dict:
     # TODO: Retourner un dictionnaire contenant le nom de l'étudiant ayant la meilleure moyenne ainsi que sa moyenne
-    return {}
+    
+    #best_student_name=
+    best_moy = 0
+    best_name = ""
+
+    for name in student_grades :
+
+        moy = sum(student_grades[name]) / len(student_grades[name])
+        if moy > best_moy :
+            best_moy = moy
+            best_name = name
+
+    
+    return {best_name: best_moy}
 
 
 def frequence(sentence: str) -> dict:
     # TODO: Afficher les lettres les plus fréquentes
     #       Retourner le tableau de lettres
 
+    frequencies = {}
+    for letter in sentence :
+        if sentence.count(letter) ==x:
+
+
     return {}
+
+
 
 
 def get_recipes():
     # TODO: Demander le nom d'une recette, puis ses ingredients et enregistrer dans une structure de données
-    pass
+    recette = input("nom de la recette : ")
+    ingredient =input("ses ingrédients :")
+    return {recette : ingredient.split()}
 
 
-def print_recipe(ingredients) -> None:
+def print_recipe(recipes) -> None:
     # TODO: Demander le nom d'une recette, puis l'afficher si elle existe
-    pass
+    recette = input("nom de la recette : ")
+
+    if recette in recipes :
+        print(recette)
+    
+    
+    
 
 
 def main() -> None:
@@ -49,7 +97,8 @@ def main() -> None:
     order()
 
     print(f"On vérifie les anagrammes...")
-    anagrams()
+    print(anagrams())
+
 
     my_list = [3, 3, 5, 6, 1, 1]
     print(f"Ma liste contient-elle des doublons? {contains_doubles(my_list)}")
